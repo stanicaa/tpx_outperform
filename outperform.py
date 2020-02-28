@@ -3,6 +3,7 @@ from pandas.tseries.offsets import BDay
 import datetime
 
 def bsd(a):
+    #function keeps the business days only, gets rid of the Sundays and Saturdays if present
     isBusinessDay = BDay().onOffset
     match_series = pd.to_datetime(a.index).map(isBusinessDay) #bC is the DataFrame we work on
     a=a[match_series]
@@ -98,7 +99,8 @@ def identify(f, t):
 
 def select(bp,bb):
     """
-    bp is the stock DF with price changes, bb is the list from identify above.
+    bp is the stock DF with price changes, bb=proc(f) & bb=bsd(bb) & bb=bb.pct_change() , where f is the stock prices file
+    bb is the list from identify function above.
     It only gets the shortest period of time per stock
 
     """
