@@ -16,7 +16,7 @@ def proc(t): #t here is the name of the excel file that holds the data for the J
     return g
 
 def price(t): #t here is the name of the excel file that holds the data for the Japanese market sectors indices
-    fi=pd.read_excel(t, index_col=0) #skiprows=3 allows you to start at 3/4
+    fi=pd.read_excel(t, index_col=0) #check how your excel file is. Mine had about 3 rows I had to get rid of , hence below
     fi=fi.drop(fi.index[0])
     fi=fi.drop(fi.index[0])
     fi=fi.drop(fi.index[0])
